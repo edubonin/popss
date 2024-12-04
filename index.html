@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POP'S - Refresque seu momento!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #92d1dd;
+            --secondary: #fbeb3e;
+            --accent1: #f191dc;
+            --accent2: #a57db6;
+            --accent3: #87bd25;
+            --white: #ffffff;
+            --dark: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+        }
+        /* Header e Navigation */
+.header {
+    background-color: var(--primary);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 80px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+}
+
+.nav-links a:hover {
+    color: var(--secondary);
+}
+
+.mobile-menu {
+    display: none;
+    cursor: pointer;
+}
+
+/* Menu responsivo */
+@media (max-width: 768px) {
+    .mobile-menu {
+        display: block;
+        font-size: 1.5rem;
+        color: var(--white);
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--primary);
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        gap: 1rem;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        width: 100%;
+        text-align: center;
+        padding: 0.8rem;
+    }
+
+    .logo-img {
+        height: 60px;
+    }
+}
+
+/* Ajuste para o conteúdo abaixo do header */
+.hero, .banner-container {
+    margin-top: 80px;
+}
+
+      
+           /* Hero Section */
+.hero {
+    background: linear-gradient(rgba(194, 231, 239, 0.7), rgba(190, 234, 243, 0.7)),
+                url('assets/img/background-hero.png'); /* Certifique-se de que este caminho está correto */
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 60px;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 2rem;
+}
+
+.hero h1 {
+    font-size: 4.5rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--secondary);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.hero p {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: var(--white);
+}
+
+
+        .cta-button {
+            background-color: var(--secondary);
+            color: var(--dark);
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            background-color: var(--accent1);
+            color: var(--white);
+        }
+
+        /* Produtos Section */
+        .products {
+            padding: 5rem 1rem;
+            background-color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .products-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+            .product-card img {
+        width: 200px;
+        height: 300px; /* Altura fixa para todas as imagens */
+        object-fit: contain; /* Mantém a proporção da imagem sem distorção */
+        margin-bottom: 1.5rem;
+        transition: transform 0.3s ease;
+    }
+
+/* Adicione também um container para a imagem para melhor controle */
+.product-card .image-container {
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .product-card h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-card p {
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+        /* Features Section */
+        .features {
+            background-color: var(--secondary);
+            padding: 5rem 1rem;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .feature-card i {
+            color: var(--primary);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: var(--accent2);
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--white);
+            padding: 5rem 1rem;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent1);
+            box-shadow: 0 0 10px rgba(241, 145, 220, 0.2);
+        }
+
+        .submit-btn {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--accent1);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 3rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+        }
+            /* Banner Rotativo */
+    .banner-container {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        overflow: hidden;
+        margin-top: 60px;
+    }
+
+    .banner-slider {
+        display: flex;
+        width: 300%;
+        height: 100%;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .slide {
+        position: relative;
+        width: 33.333%;
+        height: 100%;
+    }
+
+    .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .slide-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: var(--white);
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        z-index: 2;
+    }
+
+    .slide-content h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--white);
+    }
+
+    .slide-content p {
+        font-size: 1.5rem;
+        color: var(--white);
+    }
+
+    .banner-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0,0,0,0.5);
+        color: white;
+        padding: 1rem;
+        border: none;
+        cursor: pointer;
+        font-size: 1.5rem;
+        transition: background 0.3s;
+        z-index: 3;
+        }
+
+    .banner-btn:hover {
+        background: rgba(0,0,0,0.8);
+    }
+
+    .prev {
+        left: 1rem;
+    }
+
+ .next {
+        right: 1rem;
+}
+
+    .dots {
+     position: absolute;
+     bottom: 1rem;
+      left: 50%;
+     transform: translateX(-50%);
+     display: flex;
+     gap: 0.5rem;
+     z-index: 3;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+     background: rgba(255,255,255,0.5);
+     border-radius: 50%;
+     cursor: pointer;
+     transition: background 0.3s;
+    }
+
+    .dot.active {
+       background: white;
+    }
+
+    @media (max-width: 768px) {
+        .banner-container {
+           height: 300px;
+       }
+    
+       .slide-content h2 {
+          font-size: 1.8rem;
+      }
+    
+      .slide-content p {
+          font-size: 1rem;
+      }
+    }
+        /* Seção de Vídeo */
+    .video-section {
+        padding: 5rem 1rem;
+        background-color: var(--white);
+    }
+
+    .video-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .video-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 800px;
+        margin: 2rem auto;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .video-wrapper video {
+        width: 100%;
+        display: block;
+        cursor: pointer;
+    }
+
+    .video-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 0.3s;
+    }
+
+    .video-overlay.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .play-btn {
+        background: var(--secondary);
+        border: none;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.3s, background-color 0.3s;
+    }
+
+    .play-btn i {
+        color: var(--dark);
+        font-size: 2rem;
+        margin-left: 5px;
+    }
+
+    .play-btn:hover {
+        transform: scale(1.1);
+        background-color: var(--accent1);
+    }
+
+    .play-btn:hover i {
+        color: var(--white);
+    }
+
+    .video-description {
+        margin-top: 2rem;
+        color: var(--dark);
+        font-size: 1.2rem;
+    }
+
+    /* Responsividade para a seção de vídeo */
+    @media (max-width: 768px) {
+        .video-wrapper {
+            max-width: 100%;
+        }
+
+        .play-btn {
+            width: 60px;
+            height: 60px;
+        }
+
+        .play-btn i {
+            font-size: 1.5rem;
+        }
+
+        .video-description {
+            font-size: 1rem;
+        }
+    }
+        /* Media Queries */
+/* Mobile First Approach */
+
+/* Dispositivos muito pequenos (smartphones) */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .product-card {
+        padding: 1rem;
+    }
+    
+    .product-card img {
+        width: 150px;
+        height: 225px;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .contact-form {
+        padding: 1.5rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+}
+
+/* Tablets e dispositivos médios */
+@media (min-width: 481px) and (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .features-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Dispositivos grandes */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+/* Menu responsivo */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0.5rem;
+    }
+    
+    .logo-img {
+        height: 80px;
+        margin: -10px 0;
+    }
+    
+   
+
+
+
+/* Ajustes para o banner rotativo */
+@media (max-width: 768px) {
+    .banner-container {
+        height: 250px;
+    }
+    
+    .slide-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .slide-content p {
+        font-size: 0.9rem;
+    }
+    
+    .banner-btn {
+        padding: 0.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* Ajustes para a seção de vídeo */
+@media (max-width: 768px) {
+    .video-wrapper {
+        margin: 1rem auto;
+    }
+    
+    .play-btn {
+        width: 50px;
+        height: 50px;
+
+        img {
+    max-width: 100%;
+    height: auto;
+}
+
+.product-card img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    object-fit: contain;
+}
+
+    }
+}
+
+
+    </style>
+    
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Outras meta tags... -->
+</head>
+
+</head>
+<body>
+  <header class="header">
+    <nav class="nav-container">
+        <a href="#" class="logo">
+            <img src="assets/img/logo-01.png" alt="POP'S Logo" class="logo-img">
+        </a>
+        <div class="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-links">
+            <a href="#produtos">Produtos</a>
+            <a href="#video">Desafio</a>
+            <a href="#contato">Contato</a>
+            <a href="https://sesisenaispedu-my.sharepoint.com/:f:/g/personal/eduardo_bonin_portalsesisp_org_br/EiNyA00i2JNJnNIMTZkhaBwBAzKUgO0SnN_sXpq9hln6ww?e=FoGVbJ">Download</a>
+        </div>
+    </nav>
+</header>
+
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Refresque seu Mundo</h1>
+            <p>Descubra o sabor da diversão em cada gole</p>
+            <a href="#produtos" class="cta-button">Conheça Nossos Sabores</a>
+        </div>
+    </section>
+
+    <!-- Banner Rotativo -->
+<div class="banner-container">
+    <div class="banner-slider">
+        <div class="slide">
+            <img src="assets/img/b.gif" alt="Banner 1">
+        </div>
+        <div class="slide">
+            <img src="assets/img/b1.jpg" alt="Banner 2">
+    
+        </div>
+        <div class="slide">
+            <img src="assets/img/BANNEROF1.jpg" alt="Banner 3">
+          
+        </div>
+    </div>
+    <button class="banner-btn prev">&lt;</button>
+    <button class="banner-btn next">&gt;</button>
+    <div class="dots"></div>
+</div>
+
+
+    <section class="products" id="produtos">
+        <h2 class="section-title">Nossos Produtos</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="assets/img/Latamorandosolo (1).png" alt="POP'S Original">
+                <h3>POP'S MORANGO</h3>
+                <p>O sabor clássico que conquistou gerações</p>
+            </div>
+            <div class="product-card">
+                <img src="assets/img/Latakiwisolo (1).png" alt="POP'S Zero">
+                <h3>POP'S KIWI </h3>
+                <p>Sabor inovador</p>
+            </div>
+            <div class="product-card">
+                <img src="assets/img/Latalixiasolo (1).png" alt="POP'S Frutas">
+                <h3>POP'S LICHIA</h3>
+                <p>Uma explosão de sabores tropicais</p>
+            </div>
+        </div>
+    </section>
+
+        <!-- Seção de Vídeo -->
+    <section class="video-section" id="video">
+        <div class="video-container">
+            <h2 class="section-title">Faça Parte Da Nossa História</h2>
+            <div class="video-wrapper">
+                <video id="brand-video" controls poster="thumbnail.jpg">
+                    <source src="assets/img/the game site-youtube_1.mp4" type="video/mp4">
+                    Seu navegador não suporta o elemento de vídeo.
+                </video>
+                <div class="video-overlay">
+                    <button class="play-btn">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="video-description">
+                <p> Junto com a POP'S se torne sinônimo de refrescância e sabor!</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="features">
+        <div class="features-container">
+            <div class="feature-card">
+                <i class="fas fa-leaf"></i>
+                <h3>Natural</h3>
+                <p>Ingredientes selecionados</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-bolt"></i>
+                <h3>Energia</h3>
+                <p>Revigore seu dia</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-heart"></i>
+                <h3>Qualidade</h3>
+                <p>Sabor incomparável</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contato">
+        <div class="contact-container">
+            <h2 class="section-title">Fale Conosco</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensagem</label>
+                    <textarea id="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Enviar Mensagem</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Sobre a POP'S</h3>
+                <p>Refrescando momentos especiais desde 2024</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p>contato@pops.com</p>
+                <p>0800 123 4567</p>
+            </div>
+            <div class="footer-section">
+                <h3>Redes Sociais</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            header.classList.toggle('scrolled', window.scrollY > 0);
+        });
+            // Banner Rotativo
+    const slider = document.querySelector('.banner-slider');
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    const dotsContainer = document.querySelector('.dots');
+
+    let currentSlide = 0;
+    const slideCount = slides.length;
+
+    // Criar dots
+    slides.forEach((_, i) => {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll('.dot');
+
+    function updateDots() {
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[currentSlide].classList.add('active');
+    }
+
+    function goToSlide(n) {
+        currentSlide = n;
+        slider.style.transform = `translateX(-${currentSlide * 33.333}%)`;
+        updateDots();
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slideCount;
+        goToSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+        goToSlide(currentSlide);
+    }
+
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+
+    // Rotação automática
+    let slideInterval = setInterval(nextSlide, 5000);
+
+    // Parar a rotação automática quando o mouse estiver sobre o banner
+    slider.addEventListener('mouseenter', () => {
+        clearInterval(slideInterval);
+    });
+
+    // Retomar a rotação automática quando o mouse sair do banner
+    slider.addEventListener('mouseleave', () => {
+        slideInterval = setInterval(nextSlide, 5000);
+    });
+            // Controle do Vídeo
+    const video = document.getElementById('brand-video');
+    const videoOverlay = document.querySelector('.video-overlay');
+    const playBtn = document.querySelector('.play-btn');
+
+    playBtn.addEventListener('click', () => {
+        video.play();
+        videoOverlay.classList.add('hidden');
+    });
+
+    video.addEventListener('play', () => {
+        videoOverlay.classList.add('hidden');
+    });
+
+    video.addEventListener('pause', () => {
+        videoOverlay.classList.remove('hidden');
+    });
+
+    video.addEventListener('ended', () => {
+        videoOverlay.classList.remove('hidden');
+    });
+
+    // Menu Mobile
+const mobileMenu = document.querySelector('.mobile-menu');
+const navLinks = document.querySelector('.nav-links');
+
+mobileMenu.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+// Fechar menu ao clicar em um link
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+    });
+});
+
+// Fechar menu ao rolar a página
+window.addEventListener('scroll', () => {
+    if (navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+    }
+});
+
+    </script>
+</body>
+</html>

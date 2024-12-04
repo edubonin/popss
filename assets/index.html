@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coca-Cola - Novo Lançamento</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --coca-red: #f40009;
+            --coca-white: #ffffff;
+            --coca-black: #1a1a1a;
+            --coca-gray: #f4f4f4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+        }
+
+        /* Header Fixo */
+        .header {
+            background-color: var(--coca-red);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--coca-white);
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                        url('coca-cola-hero.jpg');
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--coca-white);
+            padding-top: 60px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background-color: var(--coca-red);
+            color: var(--coca-white);
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Seção de Produtos */
+        .products {
+            padding: 5rem 1rem;
+            background-color: var(--coca-white);
+        }
+
+        .products-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            text-align: center;
+            padding: 2rem;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-card img {
+            max-width: 200px;
+            margin-bottom: 1rem;
+        }
+
+        /* Seção de Características */
+        .features {
+            background-color: var(--coca-gray);
+            padding: 5rem 1rem;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .feature-card i {
+            color: var(--coca-red);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Banner Rotativo */
+        .banner-section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            position: relative;
+        }
+
+        .slider {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+        }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 1rem;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        /* Formulário de Contato */
+        .contact-section {
+            background-color: var(--coca-gray);
+            padding: 5rem 1rem;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-container h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--coca-black);
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--coca-black);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--coca-red);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #d40007;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--coca-black);
+            color: var(--coca-white);
+            padding: 3rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: var(--coca-white);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--coca-red);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo">
+                <img src="coca-cola-logo.png" alt="Coca-Cola Logo">
+            </a>
+            <div class="nav-links">
+                <a href="#produtos">Produtos</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#contato">Contato</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Descubra o Novo Sabor</h1>
+            <p>Uma experiência única e refrescante que vai surpreender você</p>
+            <a href="#comprar" class="cta-button">Compre Agora</a>
+        </div>
+    </section>
+
+    <!-- Produtos -->
+    <section class="products" id="produtos">
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="produto1.png" alt="Coca-Cola Original">
+                <h3>Coca-Cola Original</h3>
+                <p>O sabor clássico que você ama</p>
+            </div>
+            <div class="product-card">
+                <img src="produto2.png" alt="Coca-Cola Zero">
+                <h3>Coca-Cola Zero</h3>
+                <p>Zero açúcar, sabor incrível</p>
+            </div>
+            <div class="product-card">
+                <img src="produto3.png" alt="Novo Produto">
+                <h3>Novo Lançamento</h3>
+                <p>Experimente nossa nova criação</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Características -->
+    <section class="features">
+        <div class="features-container">
+            <div class="feature-card">
+                <i class="fas fa-leaf"></i>
+                <h3>100% Natural</h3>
+                <p>Ingredientes selecionados</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-heart"></i>
+                <h3>Qualidade</h3>
+                <p>Padrão mundial</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-globe"></i>
+                <h3>Sustentável</h3>
+                <p>Compromisso ambiental</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner Rotativo -->
+    <section class="banner-section">
+        <div class="slider">
+            <div class="slides">
+                <div class="slide">
+                    <img src="banner1.jpg" alt="Promoção 1">
+                </div>
+                <div class="slide">
+                    <img src="banner2.jpg" alt="Promoção 2">
+                </div>
+                <div class="slide">
+                    <img src="banner3.jpg" alt="Promoção 3">
+                </div>
+            </div>
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+        </div>
+    </section>
+
+    <!-- Formulário de Contato -->
+    <section class="contact-section" id="contato">
+        <div class="contact-container">
+            <h2>Contate-nos</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefone:</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensagem:</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Enviar Mensagem</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Sobre Nós</h3>
+                <p>Refrescando o mundo há mais de 130 anos</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p>contato@cocacola.com</p>
+                <p>0800 123 4567</p>
+            </div>
+            <div class="footer-section">
+                <h3>Redes Sociais</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu fixo com efeito de scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            header.classList.toggle('scrolled', window.scrollY > 0);
+        });
+
+        // Animação suave ao scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Banner Rotativo
+        const slider = document.querySelector('.slides');
+        const slides = document.querySelectorAll('.slide');
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+        let currentSlide = 0;
+
+        function goToSlide(index) {
+            slider.style.transform = `translateX(-${index * 100}%)`;
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            if (currentSlide >= slides.length - 1) {
+                goToSlide(0);
+            } else {
+                goToSlide(currentSlide + 1);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide <= 0) {
+                goToSlide(slides.length - 1);
+            } else {
+                goToSlide(currentSlide - 1);
+            }
+        }
+
+        // Auto-rotação do banner
+        setInterval
